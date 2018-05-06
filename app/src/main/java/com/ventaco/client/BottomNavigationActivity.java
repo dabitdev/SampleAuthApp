@@ -8,8 +8,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
-import com.ventaco.client.R;
-
 public class BottomNavigationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,13 +22,13 @@ public class BottomNavigationActivity extends AppCompatActivity {
                     Fragment selectedFragment = null;
                     switch (item.getItemId()) {
                         case R.id.action_item1:
-                            selectedFragment = ItemOneFragment.newInstance();
+                            selectedFragment = AccountFragment.newInstance();
                             break;
                         case R.id.action_item2:
-                            selectedFragment = ItemTwoFragment.newInstance();
+                            selectedFragment = TradingFragment.newInstance();
                             break;
                         case R.id.action_item3:
-                            selectedFragment = new AccountFragment();
+                            selectedFragment = new SettingsFragment();
                             break;
                     }
                     FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -42,7 +40,7 @@ public class BottomNavigationActivity extends AppCompatActivity {
 
         //Manually displaying the first fragment - one time only
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame_layout, ItemOneFragment.newInstance());
+        transaction.replace(R.id.frame_layout, AccountFragment.newInstance());
         transaction.commit();
 
         //Used to select an item programmatically
