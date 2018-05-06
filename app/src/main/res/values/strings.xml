@@ -29,8 +29,8 @@
     <string name="lbl_forgot_password">Forgot password?</string>
     <string name="forgot_password_msg">We just need your registered Email Id to sent you password reset instructions.</string>
 
-    <string name="item_1">Item 1</string>
-    <string name="item_2">Item 2</string>
-    <string name="item_3">Account</string>
+    <string name="item_1">Account</string>
+    <string name="item_2">Trading</string>
+    <string name="item_3">Settings</string>
 
 </resources>

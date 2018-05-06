@@ -15,8 +15,7 @@ public class BottomNavigationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bottom_navigation_activity);
-        BottomNavigationView bottomNavigationView = (BottomNavigationView)
-            findViewById(R.id.navigation);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.navigation);
 
         bottomNavigationView.setOnNavigationItemSelectedListener
             (new BottomNavigationView.OnNavigationItemSelectedListener() {
