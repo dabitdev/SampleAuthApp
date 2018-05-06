@@ -22,10 +22,10 @@ public class BottomNavigationActivity extends AppCompatActivity {
                     Fragment selectedFragment = null;
                     switch (item.getItemId()) {
                         case R.id.action_item1:
-                            selectedFragment = AccountFragment.newInstance();
+                            selectedFragment = new AccountFragment();
                             break;
                         case R.id.action_item2:
-                            selectedFragment = TradingFragment.newInstance();
+                            selectedFragment = new TradingFragment();
                             break;
                         case R.id.action_item3:
                             selectedFragment = new SettingsFragment();
@@ -40,7 +40,7 @@ public class BottomNavigationActivity extends AppCompatActivity {
 
         //Manually displaying the first fragment - one time only
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame_layout, AccountFragment.newInstance());
+        transaction.replace(R.id.frame_layout, new AccountFragment());
         transaction.commit();
 
         //Used to select an item programmatically

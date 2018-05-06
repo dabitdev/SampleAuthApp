@@ -20,26 +20,30 @@
 
 package com.ventaco.client;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 public class TradingFragment extends Fragment {
-    public static TradingFragment newInstance() {
-        TradingFragment fragment = new TradingFragment();
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_trading, container, false);
+        View view = inflater.inflate(R.layout.fragment_trading, container, false);
+        view.findViewById(R.id.mainContainer).setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+            startActivity(new Intent(view.getContext(), CompanyDetailsActivity.class));
+          }
+        });
+        return view;
     }
 }

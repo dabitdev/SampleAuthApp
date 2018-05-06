@@ -46,6 +46,8 @@
 
         <activity android:name=".BottomNavigationActivity"
                   android:screenOrientation="portrait"/>
+        <activity android:name=".CompanyDetailsActivity"/>
+        <activity android:name=".FundAccountActivity"/>
     </application>
 
 </manifest>
