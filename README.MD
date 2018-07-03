@@ -1,9 +1,10 @@
 ## VENTACO APP
-##### I used as inspiration these following libraries / samples
+##### I used as an inspiration the these following libraries / samples
 
 #### BottomNavigationView
 
 https://posttrutherablog.com/2017/03/24/android-bottomnavigationview-example/
+
 https://github.com/NealRDC/Android-BottomNavigationView-example
 
 #### Firebase Auth example
