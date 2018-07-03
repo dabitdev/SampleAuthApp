@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         // change this once you create your own google-services.json
-        applicationId "com.nordicloop.client"
+        applicationId "com.nordicloop.concierge"
         minSdkVersion 15
         targetSdkVersion 27
         versionCode 1

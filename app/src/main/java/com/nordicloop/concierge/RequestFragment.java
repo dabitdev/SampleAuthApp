@@ -18,32 +18,49 @@
  *
  */
 
-package com.nordicloop.client;
+package com.nordicloop.concierge;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Switch;
+import android.widget.Toast;
 
-public class TradingFragment extends Fragment {
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
+
+public class RequestFragment extends Fragment {
+    private EditText mEditText;
+    private Switch mApproval;
+    private Switch mUrgent;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_trading, container, false);
-        view.findViewById(R.id.mainContainer).setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View view) {
-            startActivity(new Intent(view.getContext(), CompanyDetailsActivity.class));
-          }
+        View view = inflater.inflate(R.layout.fragment_request_service, container, false);
+        Button button = view.findViewById(R.id.requestButton);
+
+        mEditText = view.findViewById(R.id.message);
+        mApproval = view.findViewById(R.id.switch1);
+        mUrgent = view.findViewById(R.id.switch2);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                resetForm();
+                Toast.makeText(view.getContext(), "Request added successfuly!", Toast.LENGTH_LONG).show();
+            }
         });
         return view;
     }
+
+    private void resetForm() {
+        mEditText.setText(null);
+        mApproval.setChecked(false);
+        mUrgent.setChecked(false);
+    }
+
 }

@@ -1,4 +1,4 @@
-package com.nordicloop.client;
+package com.nordicloop.concierge;
 
 import org.junit.Test;
 

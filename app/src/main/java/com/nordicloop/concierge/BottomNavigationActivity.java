@@ -1,4 +1,4 @@
-package com.nordicloop.client;
+package com.nordicloop.concierge;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -22,10 +22,10 @@ public class BottomNavigationActivity extends AppCompatActivity {
                     Fragment selectedFragment = null;
                     switch (item.getItemId()) {
                         case R.id.action_item1:
-                            selectedFragment = new AccountFragment();
+                            selectedFragment = new RequestFragment();
                             break;
                         case R.id.action_item2:
-                            selectedFragment = new TradingFragment();
+                            selectedFragment = new HistoryFragment();
                             break;
                         case R.id.action_item3:
                             selectedFragment = new SettingsFragment();
@@ -40,7 +40,7 @@ public class BottomNavigationActivity extends AppCompatActivity {
 
         //Manually displaying the first fragment - one time only
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame_layout, new AccountFragment());
+        transaction.replace(R.id.frame_layout, new RequestFragment());
         transaction.commit();
 
         //Used to select an item programmatically

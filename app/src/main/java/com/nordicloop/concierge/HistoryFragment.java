@@ -18,30 +18,24 @@
  *
  */
 
-package com.nordicloop.client;
+package com.nordicloop.concierge;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
+public class HistoryFragment extends Fragment {
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
-public class AccountFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_account, container, false);
-        Button button = view.findViewById(R.id.fundButton);
-            button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    startActivity(new Intent(view.getContext(), FundAccountActivity.class));
-                }
-            });
-            return view;
+        return inflater.inflate(R.layout.fragment_history, container, false);
     }
 }

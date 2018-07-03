@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Sample Auth</string>
+    <string name="app_name">Concierge</string>
     <string name="action_sign_in_short">Register</string>
     <string name="email">Email</string>
     <string name="minimum_password">Password too short, enter minimum 6 characters!</string>
@@ -29,8 +29,8 @@
     <string name="lbl_forgot_password">Forgot password?</string>
     <string name="forgot_password_msg">We just need your registered Email Id to sent you password reset instructions.</string>
 
-    <string name="item_1">Account</string>
-    <string name="item_2">Trading</string>
+    <string name="item_1">Request Service</string>
+    <string name="item_2">History</string>
     <string name="item_3">Settings</string>
 
 </resources>

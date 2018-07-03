@@ -1,4 +1,4 @@
-package com.nordicloop.client;
+package com.nordicloop.concierge;
 
 import android.graphics.Color;
 import android.os.Bundle;
