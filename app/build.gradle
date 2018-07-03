@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         // change this once you create your own google-services.json
-        applicationId "com.ventaco.client"
+        applicationId "com.nordicloop.client"
         minSdkVersion 15
         targetSdkVersion 27
         versionCode 1
@@ -27,13 +27,13 @@ android {
 dependencies {
     testImplementation 'junit:junit:4.12'
     implementation 'com.android.support:appcompat-v7:27.1.1'
-    implementation 'com.google.firebase:firebase-core:15.0.2'
-    implementation 'com.google.firebase:firebase-auth:15.1.0'
-    implementation "com.google.android.gms:play-services-auth:15.0.0"
+    implementation 'com.google.firebase:firebase-core:16.0.1'
+    implementation 'com.google.firebase:firebase-auth:16.0.2'
+    implementation "com.google.android.gms:play-services-auth:15.0.1"
     implementation 'com.android.support:design:27.1.1'
     implementation 'com.android.support:support-v4:27.1.1'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
-    implementation 'com.google.android.gms:play-services-maps:15.0.0'
+    implementation 'com.google.android.gms:play-services-maps:15.0.1'
 }
 
 //this has to be at the bottom

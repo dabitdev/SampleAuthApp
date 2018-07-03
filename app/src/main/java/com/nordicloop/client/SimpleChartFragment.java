@@ -1,4 +1,4 @@
-package com.ventaco.client;
+package com.nordicloop.client;
 
 import android.graphics.Color;
 import android.os.Bundle;

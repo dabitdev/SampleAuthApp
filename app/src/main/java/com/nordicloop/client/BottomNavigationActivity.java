@@ -1,4 +1,4 @@
-package com.ventaco.client;
+package com.nordicloop.client;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;

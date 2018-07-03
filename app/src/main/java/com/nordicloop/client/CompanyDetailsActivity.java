@@ -1,4 +1,4 @@
-package com.ventaco.client;
+package com.nordicloop.client;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -32,7 +32,6 @@ public class CompanyDetailsActivity extends AppCompatActivity {
 
     /**
      * generates less data (1 DataSet, 4 values)
-     * @return
      */
     protected PieData generatePieData() {
 

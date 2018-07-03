@@ -1,4 +1,4 @@
-package com.ventaco.client;
+package com.nordicloop.client;
 
 import org.junit.Test;
 

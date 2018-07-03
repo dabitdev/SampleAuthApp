@@ -18,7 +18,7 @@
  *
  */
 
-package com.ventaco.client;
+package com.nordicloop.client;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -27,21 +27,23 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
+public class TradingFragment extends Fragment {
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
-public class AccountFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_account, container, false);
-        Button button = view.findViewById(R.id.fundButton);
-            button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    startActivity(new Intent(view.getContext(), FundAccountActivity.class));
-                }
-            });
-            return view;
+        View view = inflater.inflate(R.layout.fragment_trading, container, false);
+        view.findViewById(R.id.mainContainer).setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+            startActivity(new Intent(view.getContext(), CompanyDetailsActivity.class));
+          }
+        });
+        return view;
     }
 }

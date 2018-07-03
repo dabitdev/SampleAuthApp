@@ -1,4 +1,4 @@
-## VENTACO APP
+## Sample Auth APP
 ##### I used as an inspiration the these following libraries / samples
 
 #### BottomNavigationView

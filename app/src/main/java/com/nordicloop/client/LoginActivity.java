@@ -1,4 +1,4 @@
-package com.ventaco.client;
+package com.nordicloop.client;
 
 import android.content.Intent;
 import android.os.Bundle;
