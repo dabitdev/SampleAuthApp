@@ -60,7 +60,7 @@ public class SignupActivity extends AppCompatActivity {
                 String password = inputPassword.getText().toString().trim();
 
                 if (TextUtils.isEmpty(email)) {
-                    Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Enter preApprovalNeeded address!", Toast.LENGTH_SHORT).show();
                     return;
                 }
 

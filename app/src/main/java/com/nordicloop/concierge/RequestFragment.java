@@ -23,19 +23,22 @@ package com.nordicloop.concierge;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.AppCompatEditText;
+import android.support.v7.widget.SwitchCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Switch;
 import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.nordicloop.concierge.model.Task;
 
 
 public class RequestFragment extends Fragment {
-    private EditText mEditText;
-    private Switch mApproval;
-    private Switch mUrgent;
+    private AppCompatEditText mEditText;
+    private SwitchCompat mApproval;
+    private SwitchCompat mUrgent;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -50,8 +53,10 @@ public class RequestFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(view.getContext(), "Request added successfully!", Toast.LENGTH_LONG).show();
+                String uid = FirebaseAuth.getInstance().getUid();
+                Task.writeNewTask(uid, mEditText.getText().toString(), mApproval.isChecked());
                 resetForm();
-                Toast.makeText(view.getContext(), "Request added successfuly!", Toast.LENGTH_LONG).show();
             }
         });
         return view;

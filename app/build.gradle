@@ -34,6 +34,9 @@ dependencies {
     implementation 'com.android.support:support-v4:27.1.1'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
     implementation 'com.google.android.gms:play-services-maps:15.0.1'
+    implementation 'com.google.firebase:firebase-database:16.0.1'
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+    implementation 'com.google.firebase:firebase-messaging:17.1.0'
 }
 
 //this has to be at the bottom

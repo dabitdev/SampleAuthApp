@@ -2,6 +2,9 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
                 tools:context=".RequestFragment">
 
     <ImageView
@@ -10,17 +13,19 @@
         android:id="@+id/vault"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@drawable/assitant"/>
+        android:src="@drawable/assistant"/>
 
-    <EditText
+    <android.support.v7.widget.AppCompatEditText
         android:layout_marginTop="10dp"
         android:lines="4"
         android:id="@+id/message"
-        android:layout_width="wrap_content"
+        app:backgroundTint="@color/colorPrimaryDark"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/vault"
         android:layout_centerHorizontal="true"
-        android:hint="Add service description"
+        android:hint="Add service description ..."
+        android:textCursorDrawable="@null"
         android:paddingLeft="40dp"
         android:paddingRight="40dp"
         android:paddingTop="13dp"/>
@@ -39,23 +44,27 @@
         android:layout_centerHorizontal="true"
         android:text="REQUEST NOW"/>
 
-    <Switch
+    <android.support.v7.widget.SwitchCompat
         android:id="@+id/switch1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/message"
+        android:layout_alignLeft="@+id/message"
         android:layout_centerVertical="true"
-        android:switchPadding="10dp"
-        android:text="Pre appoval needed"/>
+        app:thumbTint="@color/checkbox_thumb_tint"
+        app:trackTint="@color/checkbox_track_tint"
+        android:text="Pre approval needed    "/>
 
-    <Switch
+    <android.support.v7.widget.SwitchCompat
         android:id="@+id/switch2"
+        android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/message"
-        android:layout_marginBottom="200dp"
-        android:switchPadding="10dp"
-        android:text="Urgent"/>
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/switch1"
+        android:text="Urgent    "
+        app:thumbTint="@color/checkbox_thumb_tint"
+        app:trackTint="@color/checkbox_track_tint"
+        android:layout_alignParentLeft="true"/>
 
 </RelativeLayout>

@@ -20,5 +20,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
+        <Button
+            android:id="@+id/button"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"
+            android:layout_marginBottom="10dp"
+            android:text="Refresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 </ScrollView>
