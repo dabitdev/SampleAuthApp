@@ -23,7 +23,8 @@ package com.nordicloop.concierge;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.util.Log;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,15 +32,17 @@ import android.view.ViewGroup;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.nordicloop.concierge.model.Task;
+import com.nordicloop.concierge.model.ConciergeTask;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import timber.log.Timber;
 
 public class HistoryFragment extends Fragment {
-    private DatabaseReference databaseReference;
+    private RecyclerView recyclerView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -50,18 +53,30 @@ public class HistoryFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         Timber.plant(new Timber.DebugTree());
+
         addDbListener();
         View view = inflater.inflate(R.layout.fragment_history, container, false);
+        recyclerView = view.findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(inflater.getContext()));
+
         view.findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FirebaseDatabase.getInstance().getReference().child("tasks").orderByChild("uid").equalTo(FirebaseAuth.getInstance().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        List<ConciergeTask> taskList = new ArrayList<>();
                         if (dataSnapshot.exists()) {
                             for (DataSnapshot task : dataSnapshot.getChildren()) {
-                                Timber.e(task.getValue(Task.class).toString());
+                                ConciergeTask conciergeTask = task.getValue(ConciergeTask.class);
+                                if (conciergeTask != null) {
+                                    Timber.e(conciergeTask.toString());
+                                    taskList.add(conciergeTask);
+                                }
                             }
+                        }
+                        if (taskList.size() > 0) {
+                            recyclerView.setAdapter(new HistoryTaskAdapter(taskList));
                         }
                     }
 
@@ -82,7 +97,7 @@ public class HistoryFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
                     for (DataSnapshot task : dataSnapshot.getChildren()) {
-                        Timber.i(task.getValue(Task.class).toString());
+                        Timber.i(task.getValue(ConciergeTask.class).toString());
                     }
                 }
             }

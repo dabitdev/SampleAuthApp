@@ -32,7 +32,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.nordicloop.concierge.model.Task;
+import com.nordicloop.concierge.model.ConciergeTask;
 
 
 public class RequestFragment extends Fragment {
@@ -55,7 +55,7 @@ public class RequestFragment extends Fragment {
             public void onClick(View view) {
                 Toast.makeText(view.getContext(), "Request added successfully!", Toast.LENGTH_LONG).show();
                 String uid = FirebaseAuth.getInstance().getUid();
-                Task.writeNewTask(uid, mEditText.getText().toString(), mApproval.isChecked());
+                ConciergeTask.writeNewTask(uid, System.currentTimeMillis(), mEditText.getText().toString(), mApproval.isChecked(), mUrgent.isChecked());
                 resetForm();
             }
         });
