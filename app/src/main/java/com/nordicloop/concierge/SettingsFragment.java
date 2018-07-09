@@ -1,5 +1,6 @@
 package com.nordicloop.concierge;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -41,11 +42,12 @@ public class SettingsFragment extends Fragment {
       @Override
       public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
         FirebaseUser user = firebaseAuth.getCurrentUser();
-        if (user == null) {
+        Activity activity = getActivity();
+        if (user == null && activity != null && !activity.isFinishing()) {
           // user auth state is changed - user is null
           // launch login activity
-          startActivity(new Intent(getActivity(), LoginActivity.class));
-          getActivity().finish();
+          startActivity(new Intent(activity, LoginActivity.class));
+          activity.finish();
         }
       }
     };
@@ -74,7 +76,7 @@ public class SettingsFragment extends Fragment {
     sendEmail.setVisibility(View.GONE);
     remove.setVisibility(View.GONE);
 
-    progressBar = (ProgressBar) view.findViewById(R.id.progressBar);
+    progressBar = view.findViewById(R.id.progressBar);
 
     if (progressBar != null) {
       progressBar.setVisibility(View.GONE);
@@ -213,10 +215,11 @@ public class SettingsFragment extends Fragment {
               .addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
-                  if (task.isSuccessful()) {
+                  Activity activity = getActivity();
+                  if (task.isSuccessful()  && activity != null && !activity.isFinishing()) {
                     Toast.makeText(getContext(), "Your profile is deleted:( Create a account now!", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getContext(), SignupActivity.class));
-                    getActivity().finish();
+                    activity.finish();
                     progressBar.setVisibility(View.GONE);
                   } else {
                     Toast.makeText(getContext(), "Failed to delete your account!", Toast.LENGTH_SHORT).show();
