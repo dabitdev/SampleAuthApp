@@ -28,6 +28,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -62,29 +63,7 @@ public class HistoryFragment extends Fragment {
         view.findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FirebaseDatabase.getInstance().getReference().child("tasks").orderByChild("uid").equalTo(FirebaseAuth.getInstance().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        List<ConciergeTask> taskList = new ArrayList<>();
-                        if (dataSnapshot.exists()) {
-                            for (DataSnapshot task : dataSnapshot.getChildren()) {
-                                ConciergeTask conciergeTask = task.getValue(ConciergeTask.class);
-                                if (conciergeTask != null) {
-                                    Timber.e(conciergeTask.toString());
-                                    taskList.add(conciergeTask);
-                                }
-                            }
-                        }
-                        if (taskList.size() > 0) {
-                            recyclerView.setAdapter(new HistoryTaskAdapter(taskList));
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
+                refresh();
             }
         });
 
@@ -105,6 +84,38 @@ public class HistoryFragment extends Fragment {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
+            }
+        });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        refresh();
+    }
+
+    private void refresh() {
+        FirebaseDatabase.getInstance().getReference().child("tasks").orderByChild("uid").equalTo(FirebaseAuth.getInstance().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                List<ConciergeTask> taskList = new ArrayList<>();
+                if (dataSnapshot.exists()) {
+                    for (DataSnapshot task : dataSnapshot.getChildren()) {
+                        ConciergeTask conciergeTask = task.getValue(ConciergeTask.class);
+                        if (conciergeTask != null) {
+                            Timber.e(conciergeTask.toString());
+                            taskList.add(conciergeTask);
+                        }
+                    }
+                }
+                if (taskList.size() > 0) {
+                    recyclerView.setAdapter(new HistoryTaskAdapter(taskList));
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(getContext().getApplicationContext(), databaseError.getCode() + ": " + databaseError.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }
